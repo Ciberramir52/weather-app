@@ -1,0 +1,67 @@
+html, body{
+    height:100%;
+    margin:0;
+    padding: 0;
+}
+
+.basePage {
+    width: 96%;
+    min-height: 96%;
+    height: auto !important;
+    position: fixed;
+    top:2%;
+    left: 2%;
+    border-radius: 8px;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    background: radial-gradient(#ffffff, #A5DBE5);
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    width: 60%;
+    margin: 10px auto;
+    background-color: #ffffff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.item {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+}
+
+.titles {
+    border-bottom: 1px solid grey;
+}
+
+.user, .data {
+    flex: 2.5 1 0%;
+}
+
+.actions {
+    flex: 1 1 0%;
+}
+
+.user, .data h3 {
+    text-align: center;
+}
+
+.userSection {
+    background-color: #F5F5F5;
+    height: 65px;
+}
+
+.userSection:hover {
+    background-color: #cecece;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
