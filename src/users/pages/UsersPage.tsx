@@ -1,8 +1,9 @@
 import '../UsersPage.css'
 import { UserSection } from '../components/UserSection';
+import { useUsersStore } from "../../hooks";
 
 export function UsersPage() {
-    const components = [1, 2, 3, 4, 5];
+    const { users } = useUsersStore();
     return ( 
         <div className="basePage">
             <h1>Weather App</h1>
@@ -19,8 +20,8 @@ export function UsersPage() {
                     </div>
                 </div>
                 {
-                    components.map( () => (
-                        <UserSection />
+                    users.map( user => (
+                        <UserSection key={ user.id } user={ user }/>
                     ))
                 }
             </div>
