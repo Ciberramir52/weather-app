@@ -1,14 +1,17 @@
 import { BrowserRouter } from 'react-router-dom'
 import { AppRouter } from "./router";
 import { Provider } from 'react-redux';
-import { store } from './store';
+import { persistor, store } from './store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 function WeatherApp() {
   return (
     <Provider store={ store }>
-      <BrowserRouter>
-        <AppRouter />
-      </BrowserRouter>
+      <PersistGate loading={null} persistor={ persistor }>
+        <BrowserRouter>
+          <AppRouter />
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   )
 }

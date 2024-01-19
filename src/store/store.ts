@@ -1,13 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { userSlice } from "./user";
+import { persistedReducer } from "./persiststore";
+import { persistStore } from "redux-persist";
 
 export const store = configureStore({
     middleware: getDefaultMiddleware => getDefaultMiddleware({
         serializableCheck: false,
     }),
-    reducer: {
-        users: userSlice.reducer,
-    }
+    reducer: persistedReducer,
 });
 
 export type RootState = ReturnType<typeof store.getState>
+
+export const persistor = persistStore(store)
