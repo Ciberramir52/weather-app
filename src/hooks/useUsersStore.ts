@@ -1,9 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { onAddNewUser, onDeleteUser, onSetActiveUser, type RootState, type User } from "../store";
+import { useAppSelector } from "./hooks";
 
 export const useUsersStore = () => {
     const dispatch = useDispatch();
-    const { users, activeUser } = useSelector( ( state: RootState ) => state.users );
+    const { users, activeUser } = useAppSelector( ( state: RootState ) => state.users );
 
     const setActiveUser = ( user: User ) => {
         dispatch( onSetActiveUser( user ) );

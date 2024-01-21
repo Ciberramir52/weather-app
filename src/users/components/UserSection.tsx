@@ -1,5 +1,6 @@
 import { UserSectionProps } from "../../helpers";
 import '../UsersPage.css';
+import { EditButton, DeleteButton } from "./";
 
 export function UserSection( { user }: UserSectionProps ) {
     return ( 
@@ -14,7 +15,8 @@ export function UserSection( { user }: UserSectionProps ) {
                 <p><strong>Long: </strong> { user.long }</p>
             </div>
             <div className="actions">
-                <h3>{ user.long }</h3>
+                <EditButton />
+                <DeleteButton />
             </div>
         </div>
      );

@@ -1,9 +1,19 @@
 import '../UsersPage.css'
 import { UserSection } from '../components/UserSection';
 import { useUsersStore } from "../../hooks";
+import { useAppDispatch } from '../../hooks/hooks';
+import { useEffect } from 'react';
+import { getWeather } from '../../helpers';
 
 export function UsersPage() {
     const { users } = useUsersStore();
+
+    const dispatch = useAppDispatch();
+
+    useEffect( () => {
+        dispatch(getWeather( { lon: -103.32, lat: 20.74 } ))
+    })
+        
     return ( 
         <div className="basePage">
             <h1>Weather App</h1>

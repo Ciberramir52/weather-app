@@ -1,1 +1,2 @@
-export * from './UserSectionProps'
+export * from './user/UserSectionProps'
+export * from './weather/getWeather'
