@@ -7,16 +7,23 @@ interface UserState {
     activeUser: User,
 }
 
+export const userNull:User = {
+    id: '',
+    name: '',
+    lat: 0,
+    lon: 0,
+}
+
 const generateUniqueId = () => {
     return Math.random().toString(36).substring(2, 9);
 };
 
 export const userSlice = createSlice({
-    name: 'Users',
+    name: 'users',
     initialState: {
         isLoadingUsers: true,
         users: initialUsers,
-        activeUser: null,
+        activeUser: userNull,
     },
     reducers: {
         onSetActiveUser: ( state, { payload }) => {
@@ -24,17 +31,18 @@ export const userSlice = createSlice({
         },
         onAddNewUser: ( state, { payload }) => {
             state.users.push( {...payload, id: generateUniqueId() } );
-            state.activeUser = null;
+            state.activeUser = userNull;
         },
         onUpdateUser: ( state, { payload }) => {
             state.users = state.users.map( user => {
                 if ( user.id === payload.id ) return payload;
                 return user;
             });
+            state.activeUser = userNull;
         },
         onDeleteUser: ( state, { payload }) => {
             state.users = state.users.filter( user => user.id !== payload.id );
-            state.activeUser = null;
+            state.activeUser = userNull;
         },
     }
 });

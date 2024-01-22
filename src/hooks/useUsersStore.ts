@@ -1,22 +1,17 @@
-import { useDispatch } from "react-redux";
-import { onAddNewUser, onDeleteUser, onSetActiveUser, type RootState, type User } from "../store";
-import { useAppSelector } from "./hooks";
+import { onAddNewUser, onDeleteUser, onSetActiveUser, onUpdateUser, type RootState, type User } from "../store";
+import { useAppDispatch, useAppSelector } from "./hooks";
 
 export const useUsersStore = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const { users, activeUser } = useAppSelector( ( state: RootState ) => state.users );
 
-    const setActiveUser = ( user: User ) => {
-        dispatch( onSetActiveUser( user ) );
-    }
+    const setActiveUser = ( user: User ) => () => dispatch( onSetActiveUser( user ) )
 
-    const startSavingUser = ( user: User ) => {
-        dispatch( onAddNewUser( user ) );
-    }
+    const startAddingUser = ( user: User ) => () => dispatch( onAddNewUser( user ) )
 
-    const startDeletingEvent = ( user: User ) => {
-        dispatch( onDeleteUser( user ) );
-    }
+    const startUpdatingUser = ( user: User ) => () => dispatch( onUpdateUser( user ) )
+
+    const startDeletingUser = ( user: User ) => dispatch( onDeleteUser( user ) )
 
     return {
         users,
@@ -24,7 +19,8 @@ export const useUsersStore = () => {
         hasUserSelected: !!activeUser,
 
         setActiveUser,
-        startDeletingEvent,
-        startSavingUser,
+        startDeletingUser,
+        startAddingUser,
+        startUpdatingUser
     }
 }

@@ -1,6 +1,6 @@
 import { weatherAPI } from '../../api';
-import { startLoadingWeather } from '../../store/weather';
-import { AppThunk } from '../../hooks/hooks';
+import { startLoadingWeather, weatherLoaded } from '../../store/weather';
+import { AppThunk } from '../../hooks';
 
 export interface LatLon {
   lon: number;
@@ -22,6 +22,7 @@ export const getWeather = ( { lon = 0, lat = 0 }: LatLon ): AppThunk => {
         }
       })
       console.log(data);
+      dispatch( weatherLoaded() );
     } catch(err) {
       console.error(err);
       

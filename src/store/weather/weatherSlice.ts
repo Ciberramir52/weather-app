@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const weatherSlice = createSlice({
-    name: 'Weather',
+    name: 'weather',
     initialState: {
         isLoading: false
     },
@@ -9,9 +9,13 @@ export const weatherSlice = createSlice({
         startLoadingWeather: ( state ) => {
             state.isLoading = true;
         },
+        weatherLoaded: ( state ) => {
+            state.isLoading = false;
+        },
     }
 })
 
 export const {
     startLoadingWeather,
+    weatherLoaded
 } = weatherSlice.actions

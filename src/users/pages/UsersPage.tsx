@@ -1,22 +1,26 @@
 import '../UsersPage.css'
-import { UserSection } from '../components/UserSection';
-import { useUsersStore } from "../../hooks";
-import { useAppDispatch } from '../../hooks/hooks';
-import { useEffect } from 'react';
-import { getWeather } from '../../helpers';
+import { UserSection } from '../components';
+import { useAppDispatch, useUIStore, useUsersStore } from "../../hooks";
+import UserModal from '../components/modal';
+import { AddButton } from '../components/AddButton';
+import { userNull } from '../../store';
 
 export function UsersPage() {
-    const { users } = useUsersStore();
+    const { users, setActiveUser } = useUsersStore();
 
     const dispatch = useAppDispatch();
 
-    useEffect( () => {
-        dispatch(getWeather( { lon: -103.32, lat: 20.74 } ))
-    })
+    const { startAddingNewUser } = useUIStore();
+
+    const onAdd = () => {
+        dispatch( setActiveUser( userNull ) )
+        dispatch( startAddingNewUser() )
+    }
         
     return ( 
         <div className="basePage">
             <h1>Weather App</h1>
+            <UserModal />
             <div className='container'>
                 <div className='item titles'>
                     <div className="user">
@@ -35,6 +39,7 @@ export function UsersPage() {
                     ))
                 }
             </div>
+            <AddButton onAdd={ onAdd } />
         </div>
      );
 }
