@@ -1,0 +1,35 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#weather-container {
+    margin: 20px auto;
+    height: 600px;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    background-color: ghostwhite;
+    border-radius: 12px;
+}
+
+#current, #forecast, .forecast-info {
+    flex: 1;
+    text-align: center;
+}
+
+img {
+    display: inline;
+    margin-right: 5px;
+}
+
+#forecast-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.forecast-item {
+    flex: 1 1 auto;
+    text-align: center;
+    margin: 12px 0px;
+    display: flex;
+}

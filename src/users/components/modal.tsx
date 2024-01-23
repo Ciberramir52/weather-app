@@ -1,6 +1,7 @@
 import Modal from "react-modal"
 import { useAppDispatch, useUIStore, useUsersStore } from "../../hooks"
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { userNull } from "../../store";
 
 const customStyles = {
     content: {
@@ -19,24 +20,17 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 function UserModal() {
-    const { isUserModalOpen, startClosingModal } = useUIStore();
+    const { isUserModalOpen, startClosingModal, isAdding, isEditing } = useUIStore();
 
-    const { activeUser } = useUsersStore();
+    const { activeUser, startAddingUser, startUpdatingUser } = useUsersStore();
 
     const dispatch = useAppDispatch();
 
-    const [formSubmitted, setFormSubmitted] = useState(false);
-
-    const [formValues, setFormValues] = useState({
-        name: 'name',
-        lat: 0,
-        lon: 0,
-        id: ''
-    })
+    const [formValues, setFormValues] = useState( userNull )
 
     useEffect(() => {
         setFormValues({...activeUser});
-    }, [activeUser])
+    }, [isUserModalOpen])
 
     const onInputChanged = ( event: React.ChangeEvent<HTMLInputElement> ) => {
         setFormValues({
@@ -46,7 +40,23 @@ function UserModal() {
     }
 
     const onCloseUserModal = () => {
-        dispatch( startClosingModal() )             
+        dispatch( startClosingModal() )            
+    }
+
+    const handleSubmit = ( event: React.SyntheticEvent ) => {
+        event.preventDefault();
+
+        const { name, lat, lon } = formValues;
+    
+        // Validación
+        if (!name || isNaN( lat ) || isNaN( lon ) ) {
+          alert('Todos los campos son obligatorios');
+          return;
+        }
+
+        if ( isAdding ) dispatch( startAddingUser( formValues ) )
+        if ( isEditing ) dispatch( startUpdatingUser( formValues ) )
+        onCloseUserModal();
     }
 
     return ( 
@@ -59,7 +69,7 @@ function UserModal() {
         closeTimeoutMS={ 200 }
         >
             <div className="modalContent">
-                <form onSubmit={ onCloseUserModal } className="formulario">
+                <form onSubmit={ handleSubmit } autoComplete="off" className="formulario">
                     <h2>Modal User</h2>
                     <div className="form-group">
                         <label htmlFor="name"><h3>Name</h3></label>
