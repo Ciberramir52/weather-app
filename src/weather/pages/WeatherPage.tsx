@@ -8,6 +8,11 @@ export function WeatherPage() {
     const { activeUser } = useUsersStore();
     const { weatherData, getWeather } = useWeatherStore();
 
+    const { currentWeather, forecastWeather } = weatherData;
+
+    console.log( weatherData );
+    
+
     const dispatch = useAppDispatch();
 
     useEffect( () => {
@@ -18,8 +23,24 @@ export function WeatherPage() {
         <>
             <NavBar user={ activeUser.name } />
             <div id='weather-container' >
-                <CurrentWeather weather={ weatherData } />
-                <Forecast weather={ weatherData }/>
+                {
+                    ( Object.keys( currentWeather ).length === 0 )
+                        ? (
+                            <div id="current">
+                                <h3>No data available for now</h3>
+                            </div>
+                        )
+                        : <CurrentWeather weather={ currentWeather } />
+                }
+                {
+                    ( Object.keys( forecastWeather ).length === 0 )
+                        ? (
+                            <div id="forecast">
+                                <h3>No data available for now</h3>
+                            </div>
+                        )
+                        : <Forecast weather={ forecastWeather }/>
+                }
             </div>
         </>
      );

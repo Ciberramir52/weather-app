@@ -18,7 +18,7 @@ export const useWeatherStore = () => {
     return async dispatch => {
       try {
         dispatch( startLoadingWeather() );
-        const { data } = await weatherAPI.get('/forecast',{
+        const { data: forecastData } = await weatherAPI.get('/forecast',{
           params: {
             lat: lat,
             lon: lon,
@@ -26,7 +26,23 @@ export const useWeatherStore = () => {
             appid: apiKey,
           }
         })
-        dispatch( weatherLoaded( data ) );
+
+        const { data: currentData } = await weatherAPI.get('/weather',{
+          params: {
+            lat: lat,
+            lon: lon,
+            appid: apiKey,
+          }
+        })
+
+        const weatherData = {
+          currentWeather: currentData,
+          forecastWeather: forecastData,
+        }
+        
+        console.log( weatherData );
+        
+        dispatch( weatherLoaded( weatherData ) );
       } catch(err) {
         console.error(err);
         console.error('No response available');

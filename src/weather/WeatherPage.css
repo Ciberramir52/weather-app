@@ -4,16 +4,29 @@ body {
 
 #weather-container {
     margin: 20px auto;
-    height: 600px;
-    width: 60%;
+    height: 700px;
+    width: 65%;
     display: flex;
     align-items: center;
     background-color: ghostwhite;
     border-radius: 12px;
 }
 
-#current, #forecast, .forecast-info {
+#current {
+    margin-left: 5px;
+}
+
+#forecast {
+    margin-right: 5px;
+}
+
+#current, #forecast, .forecast-day, .forecast-info {
     flex: 1;
+    text-align: center;
+}
+
+.forecast-temp {
+    flex: 2;
     text-align: center;
 }
 

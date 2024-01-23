@@ -13,14 +13,14 @@ const saveActualForecast = ( list: any[] ) => {
 
 export function Forecast( { weather }:Weather ) {
     const weatherForecast = weather.list;
-    const actualList = [ weatherForecast[7], weatherForecast[15], weatherForecast[23], weatherForecast[31], weatherForecast[39] ]
+    const actualList = saveActualForecast( weatherForecast );   
     
     return ( 
         <div id="forecast">
             <h2>5-day forecast</h2>
             <div id="forecast-container">
                 {
-                    actualList.map( day => <ForecastItem day={ day } key={ day.dt } />)
+                    actualList.map( day => <ForecastItem timezone={ weather.city.timezone } day={ day } key={ day.dt } />)
                 }
             </div>
         </div>

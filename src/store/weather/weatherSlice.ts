@@ -4,7 +4,10 @@ export const weatherSlice = createSlice({
     name: 'weather',
     initialState: {
         isLoading: false,
-        weatherData: {}
+        weatherData: {
+            currentWeather: {},
+            forecastWeather: {}
+        }
     },
     reducers: {
         startLoadingWeather: ( state ) => {
