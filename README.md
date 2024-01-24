@@ -1,5 +1,5 @@
 # Weather App
-> The first step to get the app is to clone the repository to your computer and the you have to run the next command:
+> The first step to get the app is to clone the repository to your computer and then you have to run the next command:
 ``npm install``
 > The user will need node to be installed in his computer, if not, you need to install it and then you run the previous command.
 
