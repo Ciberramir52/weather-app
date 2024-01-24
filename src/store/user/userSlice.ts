@@ -1,11 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { User, initialUsers, userNull } from "./";
-
-interface UserState {
-    isLoadingUsers: boolean;
-    users: User[];
-    activeUser: User,
-}
+import { initialUsers, userNull } from "./";
 
 const generateUniqueId = () => {
     return Math.random().toString(36).substring(2, 9);
