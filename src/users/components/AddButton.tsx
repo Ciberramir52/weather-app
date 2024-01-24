@@ -1,8 +1,7 @@
-interface AddProps {
-    onAdd: () => void;
-}
+import { AddProp } from "../../helpers";
 
-export function AddButton( { onAdd }:AddProps ) {
+
+export function AddButton( { onAdd }:AddProp ) {
     return ( 
         <div  id="add-button" >
             <button onClick={ onAdd }>Añadir usuario</button>

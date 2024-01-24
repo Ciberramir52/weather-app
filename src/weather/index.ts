@@ -1,2 +1,2 @@
-export * from './pages/WeatherPage'
-export * from './components'
+export * from "./pages/WeatherPage";
+export * from "./components";

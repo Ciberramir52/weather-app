@@ -1,9 +1,8 @@
 import { UserSectionProps } from "../../helpers";
-import { useUIStore, useUsersStore } from "../../hooks";
-import { useAppDispatch } from "../../hooks/hooks";
-import '../UsersPage.css';
+import { useUIStore, useUsersStore, useAppDispatch } from "../../hooks";
+import "../UsersPage.css";
 import { EditButton, DeleteButton } from "./";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export function UserSection( { user }: UserSectionProps ) {
 
@@ -13,16 +12,16 @@ export function UserSection( { user }: UserSectionProps ) {
     const { startEditingUser } = useUIStore();
 
     const onSelect = () => {
-        dispatch( setActiveUser( user ) )        
+        dispatch( setActiveUser( user ) );    
     }
 
     const onDelete = () => {
-        dispatch( startDeletingUser( user ) )
+        dispatch( startDeletingUser( user ) );
     }
 
     const onEdit = () => {
-        dispatch( setActiveUser( user ) )
-        dispatch( startEditingUser() )
+        dispatch( setActiveUser( user ) );
+        dispatch( startEditingUser() );
     }
 
     return ( 

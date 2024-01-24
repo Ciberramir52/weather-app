@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router";
-import { UsersPage } from "../users/pages/UsersPage";
+import { UsersPage } from "../users";
 import { WeatherPage } from "../weather";
 import { useUsersStore } from "../hooks";
 

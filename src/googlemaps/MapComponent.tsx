@@ -3,18 +3,17 @@ import { useEffect, useRef, useState } from "react";
 import { useUIStore, useUsersStore } from "../hooks";
 
 export default function MapComponent(){
-    
-    const { isUserModalOpen } = useUIStore();
-    const { activeUser } = useUsersStore();
+  const { isUserModalOpen } = useUIStore();
+  const { activeUser } = useUsersStore();
 
-  const [map, setMap] = useState<google.maps.Map>()
-  const ref = useRef<HTMLDivElement>()
+  const [map, setMap] = useState<google.maps.Map>();
+  const ref = useRef<HTMLDivElement>();
   const [markerCluster, setMarkerClusters] = useState<MarkerClusterer>();
   const [marker, setMarker] = useState<{lat: number, lng: number} | undefined>();
 
   useEffect( () => {
     if(map && !markerCluster){
-        setMarker({lat: activeUser.lat, lng: activeUser.lon})
+        setMarker({lat: activeUser.lat, lng: activeUser.lon});
         setMarkerClusters(new MarkerClusterer({map, markers: [], }));
     }
   }, [isUserModalOpen])
@@ -29,8 +28,8 @@ export default function MapComponent(){
     if(map && !markerCluster){
       map.addListener('click', (e: google.maps.MapMouseEvent)=> {
         if(e.latLng){
-          const {lat, lng} = e.latLng
-          setMarker({lat: lat(), lng: lng()})
+          const {lat, lng} = e.latLng;
+          setMarker({lat: lat(), lng: lng()});
         }
       })
       setMarkerClusters(new MarkerClusterer({map, markers: [], }));

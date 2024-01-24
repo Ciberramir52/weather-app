@@ -1,4 +1,4 @@
-import { Weather } from "./WeatherInterface";
+import { Weather } from "../../helpers/";
 
 export function CurrentWeather( { weather }:Weather ) {
     
@@ -9,7 +9,7 @@ export function CurrentWeather( { weather }:Weather ) {
     const actualWeather = weather.weather[0];
     const wind = weather.wind;
 
-    const today = new Date(weather.dt*1000+(weather.timezone*1000)+18240*1000);
+    const today = new Date(weather.dt*1000+(weather.timezone*1000)+18000*1000);
     const todayStrings = today.toString().split(" ");
     const month = todayStrings[1];
     const day = todayStrings[2];

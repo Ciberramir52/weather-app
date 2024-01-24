@@ -2,32 +2,25 @@ import Modal from "react-modal"
 import { useAppDispatch, useUIStore, useUsersStore } from "../../hooks"
 import React, { useEffect, useState } from "react";
 import { userNull } from "../../store";
-import { Maps } from "../../googlemaps/Map";
 
 const customStyles = {
     content: {
         alignItems: 'center',
         justifyContent: 'center',
         margin: '0 auto',
-        //top: '20%',
-        //left: '20%',
-        //right: 'auto',
-        //bottom: 'auto',
-        //marginRight: '-20%',
-        //transform: 'translate(-50%, -50%)',
     },
 };
 
 Modal.setAppElement('#root');
 
-function UserModal() {
+export function UserModal() {
     const { isUserModalOpen, startClosingModal, isAdding, isEditing } = useUIStore();
 
     const { activeUser, startAddingUser, startUpdatingUser } = useUsersStore();
 
     const dispatch = useAppDispatch();
 
-    const [formValues, setFormValues] = useState( userNull )
+    const [formValues, setFormValues] = useState( userNull );
 
     useEffect(() => {
         setFormValues({...activeUser});
@@ -41,7 +34,7 @@ function UserModal() {
     }
 
     const onCloseUserModal = () => {
-        dispatch( startClosingModal() )            
+        dispatch( startClosingModal() );        
     }
 
     const handleSubmit = ( event: React.SyntheticEvent ) => {
@@ -49,14 +42,13 @@ function UserModal() {
 
         const { name, lat, lon } = formValues;
     
-        // Validación
         if (!name || isNaN( lat ) || isNaN( lon ) ) {
           alert('Todos los campos son obligatorios');
           return;
         }
 
-        if ( isAdding ) dispatch( startAddingUser( formValues ) )
-        if ( isEditing ) dispatch( startUpdatingUser( formValues ) )
+        if ( isAdding ) dispatch( startAddingUser( formValues ) );
+        if ( isEditing ) dispatch( startUpdatingUser( formValues ) );
         onCloseUserModal();
     }
 
@@ -76,8 +68,6 @@ function UserModal() {
                         <label htmlFor="name"><h3>Name</h3></label>
                         <input type="text" id="name" name="name" value={ formValues.name } onChange={ onInputChanged } />
                     </div>
-
-                    {/* <Maps /> */}
                     
                     <div className="form-group">
                         <label htmlFor="lat"><h3>Latitude</h3></label>
@@ -95,5 +85,3 @@ function UserModal() {
         </Modal>
      );
 }
-
-export default UserModal;

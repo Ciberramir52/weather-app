@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useAppDispatch, useUsersStore, useWeatherStore } from "../../hooks";
 import { NavBar, CurrentWeather, Forecast } from "../";
-import '../WeatherPage.css'
+import "../WeatherPage.css";
 
 export function WeatherPage() {
 
@@ -22,7 +22,7 @@ export function WeatherPage() {
     return ( 
         <>
             <NavBar user={ activeUser.name } />
-            <div id='weather-container' >
+            <div id="weather-container" >
                 {
                     ( Object.keys( currentWeather ).length === 0 )
                         ? (

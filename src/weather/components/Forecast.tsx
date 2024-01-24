@@ -1,5 +1,5 @@
-import { Weather } from "./WeatherInterface";
-import { ForecastItem } from "./ForecastItem";
+import { Weather } from "../../helpers";
+import { ForecastItem } from "./";
 
 const saveActualForecast = ( list: any[] ) => {
     const positions = [ 7, 15, 23, 31, 39 ]

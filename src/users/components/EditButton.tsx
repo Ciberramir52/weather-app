@@ -1,11 +1,8 @@
 import { IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+import { EditProp } from "../../helpers";
 
-interface EditProps {
-    onEdit: () => void;
-}
-
-export function EditButton( { onEdit }: EditProps ) {
+export function EditButton( { onEdit }:EditProp ) {
     return ( 
         <IconButton onClick={ onEdit }>
             <EditIcon />

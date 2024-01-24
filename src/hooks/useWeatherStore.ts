@@ -1,14 +1,11 @@
-import { weatherAPI } from '../api';
-import { startLoadingWeather, weatherLoaded } from '../store/weather';
-import { AppThunk, useAppSelector } from '.';
-import { type RootState } from "../store";
+import { weatherAPI } from "../api";
+import { AppThunk, useAppSelector } from ".";
+import { type RootState, LatLon, startLoadingWeather, weatherLoaded } from "../store";
+import { getEnvVariables } from "../helpers";
 
-export interface LatLon {
-  lon: number;
-  lat: number;
-}
 
-const apiKey = import.meta.env.VITE_WEATHER_API_URL
+
+const { VITE_WEATHER_API_URL: apiKey } = getEnvVariables();
 
 export const useWeatherStore = () => {
 
@@ -46,7 +43,7 @@ export const useWeatherStore = () => {
       } catch(err) {
         console.error(err);
         console.error('No response available');
-        dispatch( weatherLoaded( {} ) );
+        dispatch( weatherLoaded( { currentWeather: {}, forecastWeather: {}  } ) );
       }
     };
   }

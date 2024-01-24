@@ -1,17 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { User, initialUsers } from "./";
+import { User, initialUsers, userNull } from "./";
 
 interface UserState {
     isLoadingUsers: boolean;
     users: User[];
     activeUser: User,
-}
-
-export const userNull:User = {
-    id: '',
-    name: '',
-    lat: 0,
-    lon: 0,
 }
 
 const generateUniqueId = () => {

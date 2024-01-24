@@ -1,11 +1,8 @@
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { DeleteProp } from "../../helpers";
 
-interface DeleteProps {
-    onDelete: () => void;
-}
-
-export function DeleteButton( { onDelete }: DeleteProps ) {
+export function DeleteButton( { onDelete }:DeleteProp ) {
     return ( 
         <IconButton onClick={ onDelete } >
             <DeleteIcon />

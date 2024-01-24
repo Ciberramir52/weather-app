@@ -1,1 +1,1 @@
-export * from './persistReducer'
+export * from "./persistReducer";

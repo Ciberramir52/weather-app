@@ -5,13 +5,13 @@ export const useUsersStore = () => {
     const dispatch = useAppDispatch();
     const { users, activeUser } = useAppSelector( ( state: RootState ) => state.users );
 
-    const setActiveUser = ( user: User ) => () => dispatch( onSetActiveUser( user ) )
+    const setActiveUser = ( user: User ) => () => dispatch( onSetActiveUser( user ) );
 
-    const startAddingUser = ( user: User ) => () => dispatch( onAddNewUser( user ) )
+    const startAddingUser = ( user: User ) => () => dispatch( onAddNewUser( user ) );
 
-    const startUpdatingUser = ( user: User ) => () => dispatch( onUpdateUser( user ) )
+    const startUpdatingUser = ( user: User ) => () => dispatch( onUpdateUser( user ) );
 
-    const startDeletingUser = ( user: User ) => dispatch( onDeleteUser( user ) )
+    const startDeletingUser = ( user: User ) => dispatch( onDeleteUser( user ) );
 
     return {
         users,

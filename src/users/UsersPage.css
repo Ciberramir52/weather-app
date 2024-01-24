@@ -166,7 +166,11 @@ a {
     text-align: center;
 }
 
-
+input[type=text] {
+    font-size: 14px;
+    padding: 12px 8px;
+    box-sizing: border-box;
+}
 
 .submit-button input:hover,  #add-button button:hover{
     background-color: rgb(33, 111, 189);

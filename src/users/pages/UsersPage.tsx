@@ -1,9 +1,7 @@
-import '../UsersPage.css'
-import { UserSection } from '../components';
+import "../UsersPage.css"
+import { UserSection, UserModal, AddButton } from "../components";
 import { useAppDispatch, useUIStore, useUsersStore } from "../../hooks";
-import UserModal from '../components/modal';
-import { AddButton } from '../components/AddButton';
-import { userNull } from '../../store';
+import { userNull } from "../../store";
 
 export function UsersPage() {
     const { users, setActiveUser } = useUsersStore();
@@ -13,8 +11,8 @@ export function UsersPage() {
     const { startAddingNewUser } = useUIStore();
 
     const onAdd = () => {
-        dispatch( setActiveUser( userNull ) )
-        dispatch( startAddingNewUser() )
+        dispatch( setActiveUser( userNull ) );
+        dispatch( startAddingNewUser() );
     }
         
     return ( 

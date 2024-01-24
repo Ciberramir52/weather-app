@@ -1,2 +1,2 @@
-export * from './pages/UsersPage'
-export * from './components'
+export * from "./pages/UsersPage";
+export * from "./components";

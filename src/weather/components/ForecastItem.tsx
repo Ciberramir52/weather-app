@@ -1,10 +1,7 @@
-interface dayForecast {
-    day: any
-    timezone: number
-}
+import { dayForecast } from "../../helpers";
 
 export function ForecastItem( { day, timezone }:dayForecast ) {
-    const date = new Date(day.dt*1000+(timezone*1000)+18240*1000);
+    const date = new Date(day.dt*1000+(timezone*1000)+18000*1000);
     const dateStrings = date.toString().split(" ");    
 
     return ( 

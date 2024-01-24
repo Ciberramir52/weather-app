@@ -16,4 +16,4 @@ const rootReducer = combineReducers({
     ui: uiSlice.reducer
 })
 
-export const persistedReducer = persistReducer(persistConfig, rootReducer)
+export const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -1,10 +1,10 @@
-import './Map.css';
-import { Status, Wrapper } from '@googlemaps/react-wrapper';
-import MapComponent from './MapComponent';
+import "./Map.css";
+import { Status, Wrapper } from "@googlemaps/react-wrapper";
+import MapComponent from "./MapComponent";
 
 export function Maps() {
 
-  const render = (status: Status) => (<h1>{status}</h1>)
+  const render = (status: Status) => (<h1>{status}</h1>);
 
   return (
     <div className="App">

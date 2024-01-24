@@ -1,8 +1,8 @@
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from "react-router-dom"
 import { AppRouter } from "./router";
-import { Provider } from 'react-redux';
-import { persistor, store } from './store';
-import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from "react-redux";
+import { persistor, store } from "./store";
+import { PersistGate } from "redux-persist/integration/react";
 
 function WeatherApp() {
   return (
