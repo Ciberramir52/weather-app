@@ -2,6 +2,7 @@ import Modal from "react-modal"
 import { useAppDispatch, useUIStore, useUsersStore } from "../../hooks"
 import React, { useEffect, useState } from "react";
 import { userNull } from "../../store";
+import { Maps } from "../../googlemaps/Map";
 
 const customStyles = {
     content: {
@@ -75,6 +76,9 @@ function UserModal() {
                         <label htmlFor="name"><h3>Name</h3></label>
                         <input type="text" id="name" name="name" value={ formValues.name } onChange={ onInputChanged } />
                     </div>
+
+                    {/* <Maps /> */}
+                    
                     <div className="form-group">
                         <label htmlFor="lat"><h3>Latitude</h3></label>
                         <input type="text" id="lat" name="lat" value={ formValues.lat } onChange={ onInputChanged } />
