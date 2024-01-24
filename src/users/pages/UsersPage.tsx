@@ -33,11 +33,13 @@ export function UsersPage() {
                         <h3>Edit/ Delete</h3>
                     </div>
                 </div>
-                {
-                    users.map( user => (
-                        <UserSection key={ user.id } user={ user }/>
-                    ))
-                }
+                <div id='users'>
+                    {
+                        users.map( user => (
+                            <UserSection key={ user.id } user={ user }/>
+                        ))
+                    }
+                </div>
             </div>
             <AddButton onAdd={ onAdd } />
         </div>
